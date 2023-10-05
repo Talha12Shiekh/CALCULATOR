@@ -1,4 +1,5 @@
 export const operators = ['*', '/', '+', '-', '%', '.', '×',"÷"];
+import {ToastAndroid} from 'react-native';
 
 export function calculate(currentOperand) {
    if(typeof currentOperand == "string"){
@@ -17,7 +18,7 @@ export function calculate(currentOperand) {
          if (Number.isInteger(evaluations)) {
            return evaluations;
          } else {
-           return evaluations.toFixed(7);
+           return evaluations.toFixed(4);
          }
        } catch (error) {
          if (currentOperand == '') return '';

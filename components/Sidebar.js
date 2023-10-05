@@ -141,7 +141,7 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
 const styles = StyleSheet.create({
   sidebar: {
     backgroundColor: "#171717",
-    height: "55%",
+    height: "60%",
     width: 280,
     position: "absolute",
     top: 345,
