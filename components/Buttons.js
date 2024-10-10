@@ -2,15 +2,13 @@ import { TouchableOpacity, View, Text, StyleSheet, TouchableNativeFeedback } fro
 
 const ButtonsLayout = ({ item, handleCalulations,showHistory }) => {
   return (
-    <View style={styles.buttnContainer}>
+    <View>
       <TouchableNativeFeedback
         disabled={showHistory}
         background={TouchableNativeFeedback.Ripple("white",true,40)}
         onPress={() => handleCalulations(item.type, item.digit)}
-        style={[
-          styles.button,
-        ]}>
-          <View style={{width:85,aspectRatio:1,backgroundColor:item.backgroundColor,borderRadius:50,justifyContent:"center",alignItems:'center',margin:5}}>
+       >
+          <View style={[styles.button,{backgroundColor:item.backgroundColor}]}>
         <Text
           style={[
             styles.buttonText,
@@ -28,24 +26,8 @@ const ButtonsLayout = ({ item, handleCalulations,showHistory }) => {
 };
 
 const styles = StyleSheet.create({
-  buttnContainer: {
-    width: 100,
-    height: '240%',
-  },
-  button: {
-    width: 80,
-    borderRadius: 50,
-    height: undefined,
-    margin: 4,
-    aspectRatio: 1,
-    borderWidth: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 35,
-  },
+  button:{backgroundColor:"red",margin:5,width:85,height:85,alignSelf:"center",alignItems:"center",justifyContent:"center",borderRadius:50},
+  buttonText:{fontFamily: "Poppins_500Medium",fontSize:35}
 });
 
 export default ButtonsLayout;

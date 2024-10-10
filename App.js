@@ -8,9 +8,14 @@ import Sidebar from "./components/Sidebar";
 import { Entypo } from "@expo/vector-icons";
 import {
   useFonts,
-  Nunito_600SemiBold,
-  Nunito_700Bold,
-} from "@expo-google-fonts/nunito";
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+  Poppins_900Black,
+} from '@expo-google-fonts/poppins';
 import {
   View,
   StyleSheet,
@@ -23,9 +28,15 @@ import ButtonsData from "./components/ButtonData";
 import * as SplashScreen from "expo-splash-screen";
 
 const App = () => {
-  let [fontsloaded] = useFonts({
-    Nunito_600SemiBold,
-    Nunito_700Bold,
+
+  let [fontsLoaded] = useFonts({
+    Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+  Poppins_900Black,
   });
 
   useEffect(() => {
@@ -171,7 +182,7 @@ const App = () => {
     showHistory: false,
   });
 
-  if (!fontsloaded) {
+  if (!fontsLoaded) {
     return undefined;
   } else {
     SplashScreen.hideAsync();
@@ -206,7 +217,7 @@ const App = () => {
               style={{
                 color: "white",
                 fontSize: 50,
-                fontFamily: "Nunito_600SemiBold",
+                fontFamily: "Poppins_500Medium",
               }}
               onTextLayout={() =>
                 dispatch({
@@ -238,7 +249,7 @@ const App = () => {
             color: "grey",
             fontSize: 30,
             fontWeight: "100",
-            fontFamily: "Nunito_700Bold",
+            fontFamily: "Poppins_500Medium",
           }}
         >
           {previousOperand}
