@@ -1,33 +1,52 @@
-import { TouchableOpacity, View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  TouchableNativeFeedback,
+} from "react-native";
 
-const ButtonsLayout = ({ item, handleCalulations,showHistory }) => {
+const ButtonsLayout = ({ item, handleCalulations, showHistory }) => {
   return (
-    <View>
-      <TouchableNativeFeedback
-        disabled={showHistory}
-        background={TouchableNativeFeedback.Ripple("white",true,40)}
-        onPress={() => handleCalulations(item.type, item.digit)}
-       >
-          <View style={[styles.button,{backgroundColor:item.backgroundColor}]}>
+    <TouchableNativeFeedback
+      disabled={showHistory}
+      background={TouchableNativeFeedback.Ripple(
+        "rgba(255,255,255,0.1)",
+        true,
+        40
+      )}
+      onPress={() => handleCalulations(item.type, item.digit)}
+    >
+      <View style={[styles.button, { backgroundColor: item.backgroundColor }]}>
         <Text
           style={[
             styles.buttonText,
             {
               color: item.color,
             },
-          ]}>
+          ]}
+        >
           {item.digit}
-          <Text>{item.operation}</Text>
         </Text>
-        </View>
-      </TouchableNativeFeedback>
-    </View>
+      </View>
+    </TouchableNativeFeedback>
   );
 };
 
 const styles = StyleSheet.create({
-  button:{backgroundColor:"red",margin:5,width:85,height:85,alignSelf:"center",alignItems:"center",justifyContent:"center",borderRadius:50},
-  buttonText:{fontFamily: "Poppins_500Medium",fontSize:35}
+  button: {
+    margin: 5,
+    width: 85,
+    aspectRatio: 1,
+    borderRadius: 50,
+    justifyContent:"center",
+    alignItems:"center"
+  },
+  buttonText: {
+    fontSize: 25,
+    fontFamily: "Poppins_400Regular",
+    marginTop:5
+  },
 });
 
 export default ButtonsLayout;

@@ -84,7 +84,7 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
                     style={{
                       color: "white",
                       fontSize: 30,
-                      fontFamily: "Nunito_600SemiBold",
+                      // fontFamily: "Nunito_600SemiBold",
                     }}
                   >
                     {element.currentOperand}
@@ -93,7 +93,7 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
                     style={{
                       color: "#7fff00",
                       fontSize: 30,
-                      fontFamily: "Nunito_600SemiBold",
+                      // fontFamily: "Nunito_600SemiBold",
                     }}
                   >
                     {""} = {element.previousOperand}
