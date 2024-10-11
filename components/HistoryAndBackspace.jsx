@@ -22,7 +22,7 @@ export default function HistoryAndBackspace({ history, dispatch, showHistory }) 
             justifyContent: "space-between",
             padding: 10,
             flex: 0.8,
-            // backgroundColor: "red",
+            backgroundColor: "red",
             alignItems: "center"
         }}
     >

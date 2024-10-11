@@ -5,7 +5,7 @@ import {
     ScrollView,
 } from "react-native";
 import { operators } from "./Calculation";
-import HistoryAndBackspace from "./HistoryAndBackspace";
+import HistoryAndBackspaceNew from "./HistoryAndBackSpaceNew"; 
 
 const Greenoperators = [...operators, "(", ")"];
 
@@ -58,7 +58,7 @@ export default function Screen({ currentOperand, dispatch, state, previousOperan
                     {previousOperand}
                 </Text>
             </View>
-            <HistoryAndBackspace
+            <HistoryAndBackspaceNew
                 history={history}
                 dispatch={dispatch}
                 showHistory={showHistory}
