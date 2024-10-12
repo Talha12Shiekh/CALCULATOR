@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFill,
     zIndex: 222,
-    backgroundColor:"rgba(0,0,0,.3)"
+    backgroundColor:"rgba(0,0,0,.3)",
   },
 });
 

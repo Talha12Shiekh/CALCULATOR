@@ -24,7 +24,7 @@ export const RippleButtonContainer = ({ children, ripple, onPress }) => {
 const HistoryAndBackspaceNew = ({ history, dispatch, showHistory }) => {
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1, flexDirection: "row" }}>
+      <View style={{flex: 1, flexDirection: "row" }}>
         <View>
           <RippleButtonContainer
             ripple={40}
@@ -35,7 +35,7 @@ const HistoryAndBackspaceNew = ({ history, dispatch, showHistory }) => {
             }
             disabled={history.length == 0}
           >
-            <View style={{ width: wp(20) }}>
+            <View style={{ width: wp(20)}}>
               {!showHistory ? (
                 <Svg
                   xmlns="http://www.w3.org/2000/svg"
