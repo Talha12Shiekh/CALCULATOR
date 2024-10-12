@@ -116,6 +116,8 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
             })}
           </ScrollView>
         </View>
+        <View style={{position:"absolute",bottom:0,right:0,left:0}}>
+         
         <TouchableOpacity
           style={{
             width: "90%",
@@ -143,6 +145,7 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
             Clear history
           </Text>
         </TouchableOpacity>
+        </View>
       </Animated.View>
     </>
   );
@@ -151,14 +154,13 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
 const styles = StyleSheet.create({
   sidebar: {
     backgroundColor: "#171717",
-    height: hp(62),
+    height:hp(62),
     width: wp(70),
     position: "absolute",
     zIndex: 2222,
     bottom: 0,
   },
   backdrop: {
-    backgroundColor: "red",
     ...StyleSheet.absoluteFill,
     zIndex: 222,
     backgroundColor:"rgba(0,0,0,.3)"

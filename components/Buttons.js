@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   button: {
     margin: hp(.6),
     width: wp(22),
-    aspectRatio:1,
+    height:hp(10.3),
     borderRadius: 100,
     justifyContent:"center",
     alignItems:"center"

@@ -43,7 +43,7 @@ const HistoryAndBackspaceNew = ({ history, dispatch, showHistory }) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="rgba(255,255,255,0.5)"
-                  style={{ transform: [{ scale: 0.4 }] }}
+                  style={{height:hp(4)}}
                 >
                   <Path
                     strokeLinecap="round"
@@ -58,7 +58,7 @@ const HistoryAndBackspaceNew = ({ history, dispatch, showHistory }) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="rgba(255,255,255,0.5)"
-                  style={{ transform: [{ scale: 0.4 }] }}
+                  style={{height:hp(4)}}
                 >
                   <Path
                     strokeLinecap="round"
@@ -83,7 +83,7 @@ const HistoryAndBackspaceNew = ({ history, dispatch, showHistory }) => {
               viewBox="0 0 24 24"
               strokeWidth={0.8}
               stroke="#427e04"
-              style={{ transform: [{ scale: 0.4 }] }}
+              style={{height:hp(4)}}
             >
               <Path
                 strokeLinecap="round"

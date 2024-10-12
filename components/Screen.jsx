@@ -3,17 +3,18 @@ import {
     Text,
     View,
     ScrollView,
+    StatusBar
 } from "react-native";
 import { operators } from "./Calculation";
 import HistoryAndBackspaceNew from "./HistoryAndBackSpaceNew";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Greenoperators = [...operators, "(", ")"];
 
 export default function Screen({ currentOperand, dispatch, state, previousOperand, history, showHistory }) {
     return (
         <View style={styles.screen}>
-            <View style={{ flex: 1.5, padding: wp(8), paddingTop: hp(5), paddingBottom: hp(1)}}>
+            <View style={{ maxHeight:hp(18) }}>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                 >
@@ -48,7 +49,7 @@ export default function Screen({ currentOperand, dispatch, state, previousOperan
                     </Text>
                 </ScrollView>
             </View>
-            <View style={{ flex: 0.5, padding: wp(8) }}>
+            <View style={{ height: hp(10), justifyContent: "center", alignItems: "center" }}>
                 <Text
                     style={{
                         color: "grey",
@@ -76,6 +77,8 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "flex-end",
-        flex: 0.7,
+        height: hp(40),
+        paddingHorizontal: wp(5),
+        paddingTop:StatusBar.currentHeight
     }
 });
