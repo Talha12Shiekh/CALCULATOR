@@ -5,21 +5,22 @@ import {
     ScrollView,
 } from "react-native";
 import { operators } from "./Calculation";
-import HistoryAndBackspaceNew from "./HistoryAndBackSpaceNew"; 
+import HistoryAndBackspaceNew from "./HistoryAndBackSpaceNew";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Greenoperators = [...operators, "(", ")"];
 
 export default function Screen({ currentOperand, dispatch, state, previousOperand, history, showHistory }) {
     return (
         <View style={styles.screen}>
-            <View style={{ flex: 1.5, padding: 30, paddingTop: 50, paddingBottom: 10 }}>
+            <View style={{ flex: 1.5, padding: wp(8), paddingTop: hp(5), paddingBottom: hp(1)}}>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                 >
                     <Text
                         style={{
                             color: "white",
-                            fontSize: 40,
+                            fontSize: hp(5),
                             fontFamily: "Poppins_300Light",
                         }}
                         onTextLayout={() =>
@@ -47,11 +48,11 @@ export default function Screen({ currentOperand, dispatch, state, previousOperan
                     </Text>
                 </ScrollView>
             </View>
-            <View style={{ flex: 0.5, padding: 30 }}>
+            <View style={{ flex: 0.5, padding: wp(8) }}>
                 <Text
                     style={{
                         color: "grey",
-                        fontSize: 30,
+                        fontSize: hp(3),
                         fontFamily: "Poppins_300Light",
                     }}
                 >
@@ -76,14 +77,5 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "flex-end",
         flex: 0.7,
-    },
-    backspace: {
-        height: 40,
-        width: 40,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        borderRadius: 50,
-    },
+    }
 });

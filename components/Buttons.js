@@ -1,20 +1,16 @@
 import {
-  TouchableOpacity,
   View,
   Text,
   StyleSheet,
   TouchableNativeFeedback,
 } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {RippleButtonContainer} from "./HistoryAndBackSpaceNew";
 
 const ButtonsLayout = ({ item, handleCalulations, showHistory }) => {
   return (
-    <TouchableNativeFeedback
-      disabled={showHistory}
-      background={TouchableNativeFeedback.Ripple(
-        "rgba(255,255,255,0.1)",
-        true,
-        40
-      )}
+    <RippleButtonContainer
+      ripple={45}
       onPress={() => handleCalulations(item.type, item.digit)}
     >
       <View style={[styles.button, { backgroundColor: item.backgroundColor }]}>
@@ -29,23 +25,23 @@ const ButtonsLayout = ({ item, handleCalulations, showHistory }) => {
           {item.digit}
         </Text>
       </View>
-    </TouchableNativeFeedback>
+    </RippleButtonContainer>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    margin: 5,
-    width: 85,
-    aspectRatio: 1,
-    borderRadius: 50,
+    margin: hp(.6),
+    width: wp(22),
+    aspectRatio:1,
+    borderRadius: 100,
     justifyContent:"center",
     alignItems:"center"
   },
   buttonText: {
-    fontSize: 25,
+    fontSize: hp(3.3),
     fontFamily: "Poppins_400Regular",
-    marginTop:5
+    marginTop:hp(1)
   },
 });
 

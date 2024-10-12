@@ -7,15 +7,23 @@ import {
   StyleSheet,
   Animated,
   TouchableNativeFeedback,
+  useWindowDimensions,
+  TouchableWithoutFeedback,
 } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 const Sidebar = ({ showHistory, history, dispatch }) => {
   const leftAnimation = useRef(new Animated.Value(0)).current;
 
+  const { width } = useWindowDimensions();
+
   useEffect(() => {
     if (!showHistory) {
       Animated.timing(leftAnimation, {
-        toValue: -280,
+        toValue: -width,
         duration: 1000,
         useNativeDriver: false,
       }).start();
@@ -29,123 +37,131 @@ const Sidebar = ({ showHistory, history, dispatch }) => {
   }, [showHistory]);
 
   return (
-    <Animated.View
-      style={[
-        styles.sidebar,
-        {
-          left: leftAnimation,
-        },
-      ]}
-    >
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          overflow: "scroll",
-          height: "80%",
-        }}
+    <>
+      {showHistory && (
+        <TouchableWithoutFeedback
+          onPress={() =>
+            dispatch({
+              type: "showHistory",
+            })
+          }
+        >
+          <View style={styles.backdrop} />
+        </TouchableWithoutFeedback>
+      )}
+      <Animated.View
+        style={[
+          styles.sidebar,
+          {
+            left: leftAnimation,
+          },
+        ]}
       >
-        <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
-          {history.map((element) => {
-            return (
-              <TouchableNativeFeedback
-                key={element.key}
-                background={TouchableNativeFeedback.Ripple("white", false)}
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  borderBottomColor: "white",
-                  borderBottomWidth: 1,
-                  marginVertical: 5,
-                  marginHorizontal: 9,
-                }}
-                onPress={() =>
-                  dispatch({
-                    type: "showHistoryScreen",
-                    payload: {
-                      key: element.key,
-                      currentOperand: element.currentOperand,
-                      historyArray: history,
-                    },
-                  })
-                }
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginLeft: 10,
-                    borderBottomWidth: StyleSheet.hairlineWidth,
-                    borderBottomColor: "grey",
-                    width: "100%",
-                    overflow: "scroll",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 30,
-                      // fontFamily: "Nunito_600SemiBold",
-                    }}
-                  >
-                    {element.currentOperand}
-                  </Text>
-                  <Text
-                    style={{
-                      color: "#7fff00",
-                      fontSize: 30,
-                      // fontFamily: "Nunito_600SemiBold",
-                    }}
-                  >
-                    {""} = {element.previousOperand}
-                  </Text>
-                </View>
-              </TouchableNativeFeedback>
-            );
-          })}
-        </ScrollView>
-      </View>
-      <TouchableOpacity
-        style={{
-          width: "90%",
-          backgroundColor: "#171717",
-          padding: 5,
-          marginLeft: 10,
-          position: "relative",
-          bottom: -30,
-          zIndex: -1,
-        }}
-        onPress={() =>
-          dispatch({
-            type: "clearHistory",
-          })
-        }
-        disabled={history.length == 0}
-      >
-        <Text
+        <View
           style={{
-            color: "white",
-            textAlign: "center",
-            backgroundColor: "#4d4d4d",
-            padding: 10,
-            borderRadius: 25,
-            fontWeight: "bold",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "scroll",
+            height: hp(54),
           }}
         >
-          Clear history
-        </Text>
-      </TouchableOpacity>
-    </Animated.View>
+          <ScrollView contentContainerStyle={{ paddingBottom: hp(2) }}>
+            {history.map((element) => {
+              return (
+                <TouchableNativeFeedback
+                  key={element.key}
+                  background={TouchableNativeFeedback.Ripple("white", false)}
+                  onPress={() =>
+                    dispatch({
+                      type: "showHistoryScreen",
+                      payload: {
+                        key: element.key,
+                        currentOperand: element.currentOperand,
+                        historyArray: history,
+                      },
+                    })
+                  }
+                >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginLeft: wp(2),
+                      borderBottomWidth: StyleSheet.hairlineWidth,
+                      borderBottomColor: "grey",
+                      width: "100%",
+                      overflow: "scroll",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: wp(7),
+                      }}
+                    >
+                      {element.currentOperand}
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#7fff00",
+                        fontSize: wp(7),
+                      }}
+                    >
+                      {""} = {element.previousOperand}
+                    </Text>
+                  </View>
+                </TouchableNativeFeedback>
+              );
+            })}
+          </ScrollView>
+        </View>
+        <TouchableOpacity
+          style={{
+            width: "90%",
+            backgroundColor: "#171717",
+            padding: wp(2),
+            alignSelf: "center",
+          }}
+          onPress={() =>
+            dispatch({
+              type: "clearHistory",
+            })
+          }
+          disabled={history.length == 0}
+        >
+          <Text
+            style={{
+              color: "white",
+              textAlign: "center",
+              backgroundColor: "#4d4d4d",
+              padding: hp(1.3),
+              borderRadius: 25,
+              fontWeight: "bold",
+            }}
+          >
+            Clear history
+          </Text>
+        </TouchableOpacity>
+      </Animated.View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   sidebar: {
     backgroundColor: "#171717",
-    height: "60%",
-    width: 280,
+    height: hp(62),
+    width: wp(70),
     position: "absolute",
-    top: 345,
     zIndex: 2222,
+    bottom: 0,
+  },
+  backdrop: {
+    backgroundColor: "red",
+    ...StyleSheet.absoluteFill,
+    zIndex: 222,
+    backgroundColor:"rgba(0,0,0,.3)"
   },
 });
 
