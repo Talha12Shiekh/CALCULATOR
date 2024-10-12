@@ -4,7 +4,7 @@ import ButtonComponent from "./components/ButtonComponent";
 import ButtonsLayout from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
 import Screen from "./components/Screen";
-import { reducer } from "./Helpers.jsx"
+import { reducer } from "./Helpers.jsx";
 import {
   useFonts,
   Poppins_300Light,
@@ -14,16 +14,12 @@ import {
   Poppins_700Bold,
   Poppins_800ExtraBold,
   Poppins_900Black,
-} from '@expo-google-fonts/poppins';
-import {
-  View,
-  StyleSheet,
-} from "react-native";
+} from "@expo-google-fonts/poppins";
+import { View, StyleSheet } from "react-native";
 import ButtonsData from "./components/ButtonData";
 import * as SplashScreen from "expo-splash-screen";
 
 const App = () => {
-
   let [fontsLoaded] = useFonts({
     Poppins_300Light,
     Poppins_400Regular,
@@ -40,7 +36,6 @@ const App = () => {
     }
     prepare();
   }, []);
-
 
   const [state, dispatch] = useReducer(reducer, {
     currentOperand: "",
@@ -98,9 +93,9 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#010101",
-    flex:1,
+    flex: 1,
     position: "relative",
-  }
+  },
 });
 
 export default App;
